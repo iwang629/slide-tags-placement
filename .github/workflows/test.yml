@@ -1,0 +1,17 @@
+name: Synthetic placement checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.5.3'
+          use-public-rspm: true
+      - name: Install R dependencies
+        run: Rscript -e 'install.packages(c("data.table", "dbscan", "R.utils", "RANN", "BiocManager", "SeuratObject")); BiocManager::install("rhdf5", ask = FALSE, update = FALSE)'
+      - name: Run synthetic checks
+        run: Rscript tests/smoke.R

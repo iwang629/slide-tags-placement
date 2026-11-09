@@ -1,0 +1,16 @@
+.DS_Store
+.Rhistory
+.RData
+.Rproj.user/
+/demo_inputs/
+/demo_results/
+/results/
+/data/
+/prepared_lane/
+*.csv
+*.csv.gz
+*.tsv
+*.h5
+*.h5ad
+*.rds
+*.qs
